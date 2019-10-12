@@ -1,0 +1,7 @@
+100 Thomas  Sales    $4000
+200 Jhon    Training $7000
+300 Sachin  Tech     $4000
+400 Nilesh  Tech     $4394
+500 Anil    Maketing $8493
+600 Aanand  HR       $7594
+

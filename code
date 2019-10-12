@@ -1,0 +1,454 @@
+#####################
+---main.sh---
+#!/bin/bash
+echo "total argument: $#"     //array element//represent no of argument
+echo "1st argument= $1"
+echo "2st argument= $2"
+
+--output--
+bash main.sh 20 44
+total argument: 2
+1st argument= 20
+2st argument= 44
+#####################
+
+
+
+--arith.sh---
+#!/bin/bash
+# let used for arithmatic operations
+let arg1=11
+let arg2=12
+
+let add=$arg1+$arg2
+let sub=$arg1-$arg2
+let mul=$arg1*$arg2
+let div=$arg1/$arg2
+echo $add $sub $mul $div
+----output--
+bash arith.sh
+23 -1 132 0
+##################
+
+---array_num.sh---
+#!/bin/bash
+#shell scripting is a dynamic programming
+
+marks=(12 23 34 54 56 67 78 89 09 56)
+
+size=${#marks[*]}             #size of array
+for ((i=0;i<size;i++))
+do                            #deside block
+    echo -n "${marks[i]}"
+    echo "${marks[i]}"        #new line
+done
+
+
+--op---
+bash array_num.sh
+12233454566778890956
+
+############################
+----array_readonly----
+#!/bin/bash
+
+readonly -a shells=("knowit" "IACSD" "sunbeam" "Dac")
+echo ${#shells[@]}
+
+shells[0]="MET"
+echo ${shells[@]}
+
+
+---ot----
+bash array_readonly.sh
+4
+knowit IACSD sunbeam Dac
+##################################
+
+-----combine sring----
+#!/bin/bash
+#combile string
+str1="hello"
+str2="world"
+echo "$str1 $str2"
+
+str3="$str1 $str2"
+str3+=" code"
+echo $str3
+
+--OP-----
+bash combine_str.sh
+hello world
+hello world code
+######################################
+#!/bin/bash
+# authentication of user
+
+echo "enter username"
+read username
+echo "enter a password"
+read password
+
+if [[($username == "abc" &&$password == abc@123)]]; then
+    echo "valid password"
+else
+    echo "invalid password"
+fi
+
+---OP----
+bash signin_auth.sh
+enter username
+abc
+enter a password
+abc@123
+valid password
+
+########################################
+---array_str.sh----
+
+#!/bin/bash
+
+for value in Transflower learning pvt ltd
+do
+echo $value
+done
+
+---OP---
+bash array_str.sh
+Transflower
+learning
+pvt
+ltd
+
+#########################################
+---array_str1.sh----
+#!/bin/bash
+StringVal="welcome to know it"
+
+for Val in $StringVal
+do
+    echo $Val
+done
+
+---OP----
+bash array_str1.sh
+welcome
+to
+know
+it
+########################################
+---array---------
+#!/bin/bash
+declare  -a cities=("pune" "mumbai") 
+for value in ${cities[@]};
+do
+echo $value
+done
+
+---OP---
+bash array_str2.sh
+pune
+mumbai
+####################################
+
+---array-------
+#!/bin/bash
+DataList="os,ds,networking"
+Field_septared=$IFS
+
+IFS=,
+
+for value in $DataList;
+do
+echo $value
+done
+
+IFS=$Field_septared
+-----OP------
+bash array_str4.sh
+os
+ds
+networking
+#####################################
+-----two array---
+#combine two array
+#!/bin.bash
+
+dacmod=("cpp" "c#" "java")
+dbdamod=("cloud" "ML" "python")
+combine=(dacmod dbdamod)
+for arrItem in ${combine[@]}
+do
+    eval 'for val in "${'$arrItem'[@]}";
+    do
+        echo "$val";
+    done'
+done
+
+-----OT-----
+bash array_str3.sh
+cpp
+c#
+java
+cloud
+ML
+python
+
+#########################################
+----nested if--- 
+#!/bn/bash
+echo "enter your marks"
+read marks
+if [ $marks -eq 101 ];    #equals
+then
+    echo "rank 3"
+elif [ $marks -eq 510 ];
+then
+    echo "rank 2"
+elif [ $marks -eq 999 ];
+then
+    echo "rank 1"
+else
+    echo "sorry, try for the next time"
+fi
+
+----OP----
+bash if_nested.sh
+enter your marks
+555
+sorry, try for the next time
+
+##########################################
+--switch case----
+#!/bin/bash
+
+echo "enter your day no"
+read no
+case $no in
+1)
+echo "mon";;
+2)
+echo "Tue";;
+?)
+echo "no working day";;
+esac
+
+----OP-----
+bash case.sh
+enter your day no
+9
+no working day
+################################################
+----while----
+#!/bin/bash
+
+status=true
+count=1
+while [ $status ]
+do 
+    echo $count
+    if [ $count -eq 4 ];
+    then 
+        break
+    fi
+((count++))
+done
+
+
+----OP-----
+bash while.sh
+1
+2
+3
+4
+
+####################################################
+-----folder creation----
+#!/bin/bash
+
+echo "enter name of directory"
+read dir
+cd 
+cd Desktop/Script/           #path to create dir
+mkdir $dir
+#mkdir $dir {1..10}        #10 folder created
+
+
+----OP-----
+bash directory.sh
+enter name of directory
+thnthnt
+####################################################
+
+---pattern---
+#!/bin/bash
+
+for((i=0 ;i<5;i++))
+do
+    for((j=0;j<i;j++))
+    do
+    echo -n "*"
+    done
+    echo ""
+done
+
+---OP----
+bash pattern.sh
+
+*
+**
+***
+****
+
+################################################
+-----create two directory-----
+#!/bin/bash
+#two directory creation
+dir=("pune" "mumbai") 
+for value in ${dir[@]};
+do
+    mkdir $value
+done
+
+
+-----OP-----
+bash dir_extract.sh
+##############################################
+----create folder and sub folder-----
+#!/bin/bash
+
+echo "enter name of directory"
+read dir
+
+mkdir $dir
+
+cd 
+cd Desktop/Script/essential/$dir
+folders=("sam" "babu" "chingi")
+
+for value in ${folders[@]}
+do
+    mkdir $value
+done
+
+-----OP------
+bash dir_given_path.sh
+enter name of directory
+qwerty
+##################################################
+
+
+
+-------------------------------
+$ awk '{print;}' employee.txt
+100 Thomas  Sales    $4000
+200 Jhon    Training $7000
+300 Sachin  Tech     $4000
+400 Nilesh  Tech     $4394
+500 Anil    Maketing $8493
+600 Aanand  HR       $7594
+-------------------------------
+$ awk '/Jhon/' employee.txt
+200 Jhon    Training $7000
+------------------------------
+$ awk '{print $2,$3;}' employee.txt
+Thomas Sales
+Jhon Training
+Sachin Tech
+Nilesh Tech
+Anil Maketing
+Aanand HR
+------------------------------
+
+---searching titles---------
+#! /bin/bash
+echo "enter directory"
+read essential
+
+ls 
+ls -l >> files.txt		#list all details of files 
+awk '{print ;}' files.txt		
+awk '{print $9;}' files.txt >> titles.txt	
+#using awt copy title in another file 
+
+
+
+
+########################################
+----checking dir or file----------
+#!/bin/bash
+ls
+echo "Enter filename or foldername"
+read str
+
+if [ -f $str ]
+then
+    echo "$str is a file"
+elif [ -d $str ]
+then 
+    echo "$str is a directory"
+else
+    echo "$str is neither file or directory"
+fi
+--------OP-----------------------
+bash directory_or_file.sh
+Enter filename or foldername
+hello.sh
+hello.sh is a file
+##############################################
+
+----check file or dir if dir create text file--------
+
+#!/bin/bash
+ls
+echo "Enter filename or foldername"
+read str
+
+if [ -f $str ]
+then
+    echo "$str is a file"
+elif [ -d $str ]
+then 
+    echo "$str is a directory"
+    echo "enter filename"
+    read filep
+    cd $str
+    touch $filep
+else
+    echo "$str is neither file or directory"
+fi
+
+------OP--------------
+bash directory_or_file.sh
+Enter filename or foldername
+pp
+pp is a directory
+enter filename
+file1.txt
+###########################################
+#automatically save date in file continuously in one minute
+-------crontab-----------------
+#!/bin/bash
+cd /home/student/Desktop/Script/dfd
+touch auto.txt
+date >> auto.txt
+
+---------OP-------------
+$ crontab -e
+$ export VISUAL=nano; crontab -er 
+$ crontab -e
+--cronjob guru website--
+* * * * * /bin/sh /home/student/Desktop/Script/dfd/bkp.sh
+$ bash bkp.sh
+
+################################################
+access other computer and done actitity
+ssh student@192.168.1.34
+--reboot--
+sudo init 6
+--shutdown--
+sudo init 0
+#############################################
+
+
+
